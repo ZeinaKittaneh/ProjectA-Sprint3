@@ -4,9 +4,9 @@ import java.util.*;
 //A class used to parse arguments and options entered in the command line programs
 public class Administrator implements IAdmin{
 	//Define the valid options: help, verbose and banner options
-    private static final Option help = new Option("-h", "-help", "List a summary of all options and their arguments.");
-    private static final Option verbose = new Option("-v", "-verbose", "Enable verbose output.");
-    private static final Option banner =  new Option("-b" , "-banner", "Print the application's banner.");
+    public static final Option help = new Option("-h", "-help", "List a summary of all options and their arguments.");
+    public static final Option verbose = new Option("-v", "-verbose", "Enable verbose output.");
+    public static final Option banner =  new Option("-b" , "-banner", "Print the application's banner.");
     private String proUsage; //used to store the usage of the program(s)
     private Banner proBanner; //used to store the banners of the program(s)
 	private static File srcFile = null;
@@ -41,14 +41,14 @@ public class Administrator implements IAdmin{
 							return false;			
 					}
 					//print option based on last user option choice -- move it to wcoo
-					if(help.isEnaled())
-						System.out.println(proUsage);
-					else if(banner.isEnaled())
-						System.out.println(proBanner);
-					else if(Option.verboseEnabled && getFilesList().length == 0) { //if user didn't specify an option or a file
-						System.out.println("Please specify a source file!");
-						return false;
-					}
+//					if(help.isEnaled())
+//						System.out.println(proUsage);
+//					else if(banner.isEnaled())
+//						System.out.println(proBanner);
+//					else if(Option.verboseEnabled && getFilesList().length == 0) { //if user didn't specify an option or a file
+//						System.out.println("Please specify a source file!");
+//						return false;
+//					}
 					return true;			
 //				}
 //				else {

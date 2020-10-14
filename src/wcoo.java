@@ -14,6 +14,14 @@ public class wcoo {
 		Administrator admin = new Administrator(args, USAGE, BANNER); 
 		
 		if(admin.parseOptionsArgs(args)) { //If arguments are valid
+			if(admin.help.isEnaled())
+				System.out.println(USAGE);
+			else if(admin.banner.isEnaled())
+				System.out.println(BANNER);
+			else if(Option.verboseEnabled && admin.getFilesList().length == 0) { //if user didn't specify an option or a file
+				System.out.println("Please specify a source file!");
+				return;
+			}
 			CounterFactory cf = new CounterFactory(); //Create the counter using counter factory
 			if(admin.getFilesList().length != 0) { //If user has entered at least one file name, continue
 					new WCcomposite().countingAll(admin.getFilesList(), cf); //Call the composed class for WC counter 
