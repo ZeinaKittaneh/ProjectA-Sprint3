@@ -11,7 +11,7 @@ public class wcoo {
 	public static void main(String args[]) throws IOException {
 		
 		//Take an object of class Administrator and pass command line arguments, usages, banners of counters to  it
-		Administrator admin = new Administrator(args, USAGE, BANNER); 
+		Administrator admin = new Administrator(args); 
 		
 		if(admin.parseOptionsArgs(args)) { //If arguments are valid
 			if(admin.help.isEnaled())
@@ -27,6 +27,9 @@ public class wcoo {
 					new WCcomposite().countingAll(admin.getFilesList(), cf); //Call the composed class for WC counter 
 	
 			}
+		}
+		else {
+			System.out.println("Invalid arguments!");
 		}
 	}
 }

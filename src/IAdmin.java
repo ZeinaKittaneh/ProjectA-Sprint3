@@ -29,7 +29,7 @@ public interface IAdmin {
 	 * @param args[]
 	 * @return true if args length >= 2, false otherwise
 	 */
-	boolean isValidArgs(String args[]);
+//	boolean isValidArgs(String args[]);
 	
 	/**
 	 * A method to check if a file exists
@@ -37,7 +37,7 @@ public interface IAdmin {
 	 * @return true if file exists, false otherwise
 	 * @throws IOException
 	 */
-	boolean fileExist(String srcFilename) throws IOException;
+//	boolean fileExist(String srcFilename) throws IOException;
 	
 	/**
 	 * A method to check if arguments array is empty

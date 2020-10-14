@@ -7,9 +7,7 @@ public class Administrator implements IAdmin{
     public static final Option help = new Option("-h", "-help", "List a summary of all options and their arguments.");
     public static final Option verbose = new Option("-v", "-verbose", "Enable verbose output.");
     public static final Option banner =  new Option("-b" , "-banner", "Print the application's banner.");
-    private String proUsage; //used to store the usage of the program(s)
-    private Banner proBanner; //used to store the banners of the program(s)
-	private static File srcFile = null;
+	public static File srcFile = null;
 	protected String srcFilename;
 	private String args[];
     public List<String> filesList = new ArrayList<String>(); //A list of all valid files entered by the user
@@ -17,13 +15,9 @@ public class Administrator implements IAdmin{
 	/**
 	 * Administrator constructor
 	 * @param args[] command line arguments array
-	 * @param proUsage usage of the program
-	 * @param proBanner banner of the program
 	 */
-	public Administrator(String[] args, String proUsage, Banner proBanner) {
+	public Administrator(String[] args) {
 		this.args = args;
-		this.proUsage = proUsage;
-		this.proBanner = proBanner;
 	}
 	
 	/**
@@ -32,11 +26,12 @@ public class Administrator implements IAdmin{
 	 * @return boolean, true: valid arguments, false: invalid arguments
 	 */
 	public boolean parseOptionsArgs(String args[]) throws IOException {
+		FileCheck fileChecker = new FileCheck();
 		if(!checkEmptyArgs(args)) { //Check if user has entered arguments
 //				if(isValidArgs(args)) {//Check number of arguments
 					for(int i = 0; i < args.length; i++) { //loop all arguments, check if it is an option or a file 
 						if (checkOptions(args[i]));
-						else if(fileExist(args[i])); //make process in a separate file
+						else if(fileChecker.fileExists(args[i], this)); //make process in a separate file
 						else
 							return false;			
 					}
@@ -62,7 +57,7 @@ public class Administrator implements IAdmin{
 		}
 		else {
 //			proUsage.get(programName);
-			System.out.println("empty args!");
+//			System.out.println("empty args!");
 			return false;
 		}
 	}
@@ -115,13 +110,13 @@ public class Administrator implements IAdmin{
 	 * @param args[]
 	 * @return true if args length >= 2, false otherwise
 	 */
-	public boolean isValidArgs(String args[]) {
-		if (args.length < 1){
-			//proUsage.get(programName);
-			return false;
-		}
-		return true;
-	}
+//	public boolean isValidArgs(String args[]) {
+//		if (args.length < 1){
+//			//proUsage.get(programName);
+//			return false;
+//		}
+//		return true;
+//	}
 	
 	/**
 	 * A method to check if a file exists
@@ -129,23 +124,23 @@ public class Administrator implements IAdmin{
 	 * @return true if file exists, false otherwise
 	 * @throws IOException
 	 */
-	public boolean fileExist(String srcFilename) throws IOException{
-		if (srcFilename != null) { // Check <src>
-			//System.out.println("Counting Characters in: srcFilename = '" + srcFilename + "'");
-			srcFile = new File(srcFilename);
-			if (!srcFile.canRead()) {
-				System.out.println("Cannot open File '" + srcFilename + "'");
-				return false;
-			}
-			else {
-				System.out.println(srcFilename);
-				filesList.add(srcFilename);
-				System.out.println("[OK] Filename = '" + srcFilename + "'");
-				return true;
-			}
-		}
-		return false;
-	}
+//	public boolean fileExist(String srcFilename) throws IOException{
+//		if (srcFilename != null) { // Check <src>
+//			//System.out.println("Counting Characters in: srcFilename = '" + srcFilename + "'");
+//			srcFile = new File(srcFilename);
+//			if (!srcFile.canRead()) {
+//				System.out.println("Cannot open File '" + srcFilename + "'");
+//				return false;
+//			}
+//			else {
+//				System.out.println(srcFilename);
+//				filesList.add(srcFilename);
+//				System.out.println("[OK] Filename = '" + srcFilename + "'");
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 	
 	/**
 	 * A method to check if arguments array is empty
