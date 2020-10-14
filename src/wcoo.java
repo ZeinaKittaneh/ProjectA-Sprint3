@@ -10,7 +10,7 @@ public class wcoo {
 
 	public static void main(String args[]) throws IOException {
 		
-		//Take an object of class Administrator and pass command line arguments, usages, banners of counters to  it
+		//Take an object of class Administrator and pass command line arguments to  it
 		Administrator admin = new Administrator(args); 
 		
 		if(admin.parseOptionsArgs(args)) { //If arguments are valid

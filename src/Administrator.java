@@ -28,56 +28,18 @@ public class Administrator implements IAdmin{
 	public boolean parseOptionsArgs(String args[]) throws IOException {
 		FileCheck fileChecker = new FileCheck();
 		if(!checkEmptyArgs(args)) { //Check if user has entered arguments
-//				if(isValidArgs(args)) {//Check number of arguments
-					for(int i = 0; i < args.length; i++) { //loop all arguments, check if it is an option or a file 
-						if (checkOptions(args[i]));
-						else if(fileChecker.fileExists(args[i], this)); //make process in a separate file
-						else
-							return false;			
-					}
-					//print option based on last user option choice -- move it to wcoo
-//					if(help.isEnaled())
-//						System.out.println(proUsage);
-//					else if(banner.isEnaled())
-//						System.out.println(proBanner);
-//					else if(Option.verboseEnabled && getFilesList().length == 0) { //if user didn't specify an option or a file
-//						System.out.println("Please specify a source file!");
-//						return false;
-//					}
-					return true;			
-//				}
-//				else {
-//					System.out.println("not valid");
-//					return false;
-//					
-//				}
-//			}
-//			else 
-//				return false;
+			for(int i = 0; i < args.length; i++) { //loop all arguments, check if it is an option or a file 
+				if (checkOptions(args[i]));
+				else if(fileChecker.fileExists(args[i], this)); //make process in a separate file
+				else
+					return false;			
+			}
+			return true;			
 		}
-		else {
-//			proUsage.get(programName);
-//			System.out.println("empty args!");
+		else 
 			return false;
-		}
 	}
 
-	/**
-	 * A method to check the validity of a program name
-	 * @param programName
-	 * @return true if programName is valid, false otherwise
-	 */
-//	public boolean checkProgramName(String programName) {
-//		if(proBanner.contains(programName)) {
-//			this.programName= programName; 
-//			return true;
-//		}
-//		else {
-//			System.out.println("invalid program name!");
-//			return false;
-//		}
-//	}
-	
 	/**
 	 * A method to check if the argument is an option then enable it and disable the other options 
 	 * @param arg : an argument
@@ -104,43 +66,6 @@ public class Administrator implements IAdmin{
 		}
 		return false;
 	}
-	
-	/**
-	 * A method to check the validity of the number of arguments
-	 * @param args[]
-	 * @return true if args length >= 2, false otherwise
-	 */
-//	public boolean isValidArgs(String args[]) {
-//		if (args.length < 1){
-//			//proUsage.get(programName);
-//			return false;
-//		}
-//		return true;
-//	}
-	
-	/**
-	 * A method to check if a file exists
-	 * @param srcFilename
-	 * @return true if file exists, false otherwise
-	 * @throws IOException
-	 */
-//	public boolean fileExist(String srcFilename) throws IOException{
-//		if (srcFilename != null) { // Check <src>
-//			//System.out.println("Counting Characters in: srcFilename = '" + srcFilename + "'");
-//			srcFile = new File(srcFilename);
-//			if (!srcFile.canRead()) {
-//				System.out.println("Cannot open File '" + srcFilename + "'");
-//				return false;
-//			}
-//			else {
-//				System.out.println(srcFilename);
-//				filesList.add(srcFilename);
-//				System.out.println("[OK] Filename = '" + srcFilename + "'");
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
 	
 	/**
 	 * A method to check if arguments array is empty

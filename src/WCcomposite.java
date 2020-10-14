@@ -31,7 +31,7 @@ public class WCcomposite extends Counter{
 		}
 		//	Print the total if more than one source file.
 		if (args.length > 1) {
-			System.out.println("**Total:" + totalLines + " lines, " + totalWords + " words, " + totalChars + " chars\n");
+			System.out.println("**Total: " + totalLines + " lines, " + totalWords + " words, " + totalChars + " chars\n");
 		}
 		
 	}
